@@ -11,9 +11,10 @@ int main(){
 
   int res[casos];
 
+  getchar();
   for(i=0; i<casos; i++){
     
-    scanf("%s", palavra);
+    fgets(palavra, 1000, stdin);
 
     cont = 0;
     for(j=0; j<strlen(palavra); j++){

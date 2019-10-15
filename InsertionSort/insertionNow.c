@@ -16,8 +16,8 @@ int main() {
 
   printf("\n");
 
-  insertionRecursivo(array, n);
-  // insertion(array, n);
+  // insertionRecursivo(array, n);
+  insertion(array, n);
 
 
   for(i=0; i<n; i++){
