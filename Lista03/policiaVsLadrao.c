@@ -45,7 +45,7 @@ int policialPegaLadrao(char **matriz, int tamanhoMatriz, int posLinha, int posCo
 
 int main(){
 
-  int casos, i, linha, coluna, n, k;
+  int casos, i, j, linha, coluna, n, k;
 
   scanf("%d", &casos);
 
@@ -59,7 +59,7 @@ int main(){
     minimundo = Alocar_matriz_real(n, n);
 
     preencherMatriz(minimundo, n);
-    escreveMatriz(minimundo, n);
+    // escreveMatriz(minimundo, n);
 
     
     respostas[i] = 0;
@@ -71,11 +71,12 @@ int main(){
         }
       }
     }
-    
-    Liberar_matriz_real(n, n, minimundo);
-
+    // Liberar_matriz_real(n, n, minimundo);
   }
 
+  for(j=0; j<casos; j++){
+    printf("%d\n", respostas[j]);
+  }
 
 
   return 0;
@@ -115,13 +116,25 @@ int policialPegaLadrao(char **matriz, int tamanhoMatriz, int posLinha, int posCo
 
   int ladraoCapturado = 0;
 
-  // matriz[posLinha+1][posColuna]
-  // matriz[posLinha-1][posColuna]
-  // matriz[posLinha][posColuna+1]
-  // matriz[posLinha][posColuna-1]
-  // matriz[posLinha-1][posColuna-1]
-  // matriz[posLinha+1][posColuna+1]
+  int i;
+  for(i=k; i>0; i--){
+    if(posColuna+i < tamanhoMatriz){
+      if(matriz[posLinha][posColuna+i] == 'L') {
+        matriz[posLinha][posColuna+i] = 'C';
+        ladraoCapturado = 1;
+        break;
+      }
+    }
+    if(posColuna-i > 0 ){
+      if(matriz[posLinha][posColuna-i] == 'L') {
+        matriz[posLinha][posColuna-i] = 'C';
+        ladraoCapturado = 1;
+        break;
+      } 
+    } 
+  }
 
+  // escreveMatriz(matriz, tamanhoMatriz);
 
   return ladraoCapturado;
 }
