@@ -44,32 +44,44 @@ void imprimirLista(Frase *lista){
   }
 }
 
-// void ordenacaoAlfabeticaAsc(Frase *lista){
-//   Frase *temp = lista->proxFrase;
+Frase* ordernarAsc(Frase *lista){
+  Frase *j;
+  Frase *i = lista->proxFrase;
+  char temp[1000];
+  char auxFrase[1000];
+  
+  while(i != NULL){
+    Frase *aux = i;
+    strcpy(auxFrase, "");
+    strcpy(auxFrase, aux->frase);
+    j = i->fraseAnterior;
 
-//   while(lista != NULL){
-//     Frase *i, *j, *aux;
-//     i = temp;
-//     j = temp->fraseAnterior;
-//     aux = 
-//   }
-// }
+    while(j != NULL && (strcmp(j->frase, aux->frase) > 0) ){
+      strcpy(temp, "");
+      strcpy(temp, j->frase);
+      strcpy(j->frase, aux->frase);
+      strcpy(aux->frase, temp);
 
-// void insertion(int arr[], int arrSize){
-//   int i, j, k, aux;
+      j->fraseAnterior;
+    }
+    
+    if(j == NULL){
+      j = lista;
+      j = j->proxFrase;
+    } else {
+      j = j->proxFrase;
+    }
 
-//   for(i=1; i<arrSize; i++){
-//     j = i - 1;
-//     aux = arr[i];
+    strcpy(j->frase, auxFrase);
 
-//     while(j>=0 && arr[j]>aux){
-//       arr[j+1] = arr[j];
-//       j--;
-//     }
+    i = i->proxFrase;
 
-//     arr[j+1] = aux;    
-//   }
-// }
+    printf("\n\nOrdenando lista\n");
+    imprimirLista(lista);
+  }
+
+  return lista;
+}
 
 int main() {
 
@@ -87,6 +99,9 @@ int main() {
 
   }while( !(strcmp(f, "ASC") == 0) && !(strcmp(f, "DESC") == 0) );
 
+  imprimirLista(lista);
+  ordernarAsc(lista);
+  printf("\n\nLista ordenada:\n");
   imprimirLista(lista);
 
   return 0;
